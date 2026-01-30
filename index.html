@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISAACGAMES // NEURAL_LINK</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;600&display=swap');
+    
+    :root {
+      --neon-cyan: #00f3ff;
+      --neon-pink: #ff00ff;
+      --dark-bg: #020617;
+    }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background-color: var(--dark-bg);
+      color: #f8fafc;
+      overflow-x: hidden;
+      background-image: 
+        linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .font-orbitron { font-family: 'Orbitron', sans-serif; }
+
+    .neon-text-cyan {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.7);
+    }
+
+    .cyber-card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(0, 243, 255, 0.2);
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    .cyber-card::after {
+      content: "";
+      position: absolute;
+      top: -1px; left: -1px; right: -1px; bottom: -1px;
+      border: 1px solid var(--neon-cyan);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .cyber-card:hover::after {
+      opacity: 0.5;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+    }
+
+    .scanline {
+      width: 100%;
+      height: 100px;
+      z-index: 100;
+      background: linear-gradient(0deg, rgba(0, 243, 255, 0) 0%, rgba(0, 243, 255, 0.05) 50%, rgba(0, 243, 255, 0) 100%);
+      position: fixed;
+      bottom: 100%;
+      animation: scanline 10s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes scanline {
+      0% { bottom: 100%; }
+      100% { bottom: -100px; }
+    }
+
+    .glitch:hover {
+      animation: glitch-anim 0.2s linear infinite;
+    }
+
+    @keyframes glitch-anim {
+      0% { transform: translate(0); }
+      25% { transform: translate(-2px, 1px); }
+      50% { transform: translate(2px, -1px); }
+      75% { transform: translate(-1px, -2px); }
+      100% { transform: translate(0); }
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #020617; }
+    ::-webkit-scrollbar-thumb { background: var(--neon-cyan); }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+</head>
+<body>
+  <div class="scanline"></div>
+  <div id="root"></div>
+  <script type="module" src="index.js"></script>
+</body>
+</html>
